@@ -6,7 +6,7 @@ object pepita {
   method fly(minutes) {
     energy -= minutes * 3
   }
-} //650 calorias por ahora, todavia no desayune//650 calorias por ahora, todavia no desayune
+} 
 
 
 class persona{
