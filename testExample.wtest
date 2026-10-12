@@ -80,4 +80,27 @@ describe "inscripcion a materias" {
     assert.equals(alex.promedioMateriasAprobadasEn(to), 5)
     assert.notThat(alex.cursadasDeMateriaEnOrden(mate1) == [])
   }
+  
+  test "test 3" {
+    obj2.requisitos().add(obj1)
+    obj2.requisitos().add(mate1)
+    
+    obj3.requisitos().add(obj2)
+    obj3.requisitos().add(bdd)
+    
+    pconc.requisitos().add(obj1)
+    pconc.requisitos().add(bdd)
+    
+    desarrolloLocal.requisitos().add(meYa)
+    
+    const andy = new Persona()
+    
+    andy.inscribirseA(programacion)
+    andy.cursarMateriaConNota(obj1, 10)
+    andy.cursarMateriaConNota(mate1, 10)
+    
+    
+    
+    assert.equals(2, obj2.requisitos().size())
+  }
 }
