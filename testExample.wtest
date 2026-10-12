@@ -99,20 +99,44 @@ describe "inscripcion a materias" {
     andy.cursarMateriaConNota(obj1, 10)
     andy.cursarMateriaConNota(mate1, 10)
     
-    assert.that(andy.puedeInscribirseEn(obj2))
+    assert.that(alex.puedeInscribirseEn(obj2))
     assert.that(
-      andy.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(epl)
+      alex.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(epl)
     )
     assert.that(
-      andy.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(obj2)
+      alex.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(obj2)
     )
     assert.that(
-      andy.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(bdd)
+      alex.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(bdd)
     )
     assert.that(
-      andy.materiasALasQuePuedeIncribirseDeCarrera(tuess).contains(meYa)
+      alex.materiasALasQuePuedeIncribirseDeCarrera(tuess).contains(meYa)
     )
-    assert.equals(andy.materiasALasQuePuedeIncribirseDeCarrera(tuess).size(), 1)
+    assert.equals(alex.materiasALasQuePuedeIncribirseDeCarrera(tuess).size(), 1)
+    
+    assert.notThat(alex.puedeInscribirseEn(psicologia))
+    
+    alex.inscribirseAMateria(psicologia)
+    
+    assert.notThat(alex.puedeInscribirseEn(economia))
+    
+    alex.inscribirseAMateria(economia)
+    
+    assert.notThat(alex.puedeInscribirseEn(desarrolloLocal))
+    
+    alex.inscribirseAMateria(desarrolloLocal)
+    
+    alex.inscribirseAMateria(obj2)
+    alex.inscribirseAMateria(obj2)
+    
+    andy.inscribirseAMateria(obj2)
+    
+    obj2.estudiantesInscriptosEsteCuatrimestre().includes(andy)
+    
+    obj2.estudiantesInscriptosEsteCuatrimestre().includes(alex)
+    
+    assert.equals(obj2.estudiantesInscriptosEsteCuatrimestre().size(), 2)
+    
     
     assert.equals(2, obj2.requisitos().size())
   }

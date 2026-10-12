@@ -130,7 +130,7 @@ class Carrera {
 
 class Materia {
   var property nota = 1
-  var estudiantesInscriptosEsteCuatrimestre = #{}
+  var property estudiantesInscriptosEsteCuatrimestre = #{}
   var property requisitos = #{}
   var property año = 1
   const property creditosQueAporta = 20
