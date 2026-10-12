@@ -99,7 +99,20 @@ describe "inscripcion a materias" {
     andy.cursarMateriaConNota(obj1, 10)
     andy.cursarMateriaConNota(mate1, 10)
     
-    
+    assert.that(andy.puedeInscribirseEn(obj2))
+    assert.that(
+      andy.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(epl)
+    )
+    assert.that(
+      andy.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(obj2)
+    )
+    assert.that(
+      andy.materiasALasQuePuedeIncribirseDeCarrera(programacion).contains(bdd)
+    )
+    assert.that(
+      andy.materiasALasQuePuedeIncribirseDeCarrera(tuess).contains(meYa)
+    )
+    assert.equals(andy.materiasALasQuePuedeIncribirseDeCarrera(tuess).size(), 1)
     
     assert.equals(2, obj2.requisitos().size())
   }
