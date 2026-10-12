@@ -49,7 +49,9 @@ describe "inscripcion a materias" {
     alex.inscribirseA(programacion)
     alex.inscribirseA(tuess)
     
-    assert.that(alex.carreras().size() == 2)
-    assert.that(alex.carreras().materias().contains())
+    assert.that(alex.carrerasDeEstudiante().size() == 2)
+    assert.that(alex.carrerasDeEstudiante().contains(programacion))
+    assert.that(alex.perteneceMateriaACarrerasDeEstudiante(bdd))
+    assert.notThat(alex.perteneceMateriaACarrerasDeEstudiante(psicologia))
   }
 }
