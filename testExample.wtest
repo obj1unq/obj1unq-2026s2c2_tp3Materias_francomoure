@@ -54,4 +54,21 @@ describe "inscripcion a materias" {
     assert.that(alex.perteneceMateriaACarrerasDeEstudiante(bdd))
     assert.notThat(alex.perteneceMateriaACarrerasDeEstudiante(psicologia))
   }
+  
+  test "test2" {
+    alex.cursarMateriaConNota(mate1, 2)
+    alex.cursarMateriaConNota(obj1, 10)
+    alex.cursarMateriaConNota(economia, 6)
+    alex.cursarMateriaConNota(tYs, 8)
+    alex.cursarMateriaConNota(mate1, 8)
+    alex.cursarMateriaConNota(bdd, 2)
+    
+    //lo pongo asi o tengo que poner que da error?
+    alex.cursarMateriaConNota(mate1, 7)
+    
+    alex.cursarMateriaConNota(bdd, 12)
+    
+    assert.that(alex.materiasAprobadas().contains(mate1))
+    assert.notThat(alex.materiasAprobadas().contains(bdd))
+  }
 }
