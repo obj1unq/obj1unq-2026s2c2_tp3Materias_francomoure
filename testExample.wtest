@@ -72,6 +72,12 @@ describe "inscripcion a materias" {
     assert.notThat(alex.materiasAprobadas().contains(bdd))
     
     assert.equals(alex.promedioMateriasAprobadasEn(programacion), 9)
+    assert.equals(alex.promedioMateriasAprobadasEn(tuess), 7)
     assert.equals(alex.cantidadDeMateriasAprobadasEnCarrera(programacion), 2)
+    assert.equals(alex.promedioMateriasAprobadasEn(to), 5)
+    
+    alex.inscribirseA(to)
+    assert.equals(alex.promedioMateriasAprobadasEn(to), 5)
+    assert.notThat(alex.cursadasDeMateriaEnOrden(mate1) == [])
   }
 }
