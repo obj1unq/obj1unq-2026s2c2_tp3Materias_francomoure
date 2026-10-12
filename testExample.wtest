@@ -70,5 +70,8 @@ describe "inscripcion a materias" {
     
     assert.that(alex.materiasAprobadas().contains(mate1))
     assert.notThat(alex.materiasAprobadas().contains(bdd))
+    
+    assert.equals(alex.promedioMateriasAprobadasEn(programacion), 9)
+    assert.equals(alex.cantidadDeMateriasAprobadasEnCarrera(programacion), 2)
   }
 }
