@@ -1,7 +1,7 @@
 class Persona {
   var carreras = #{}
-  var materiasConNota = []
-  var materiasAprobadas = #{}
+  var property materiasConNota = []
+  var property materiasAprobadas = #{}
   var property materiasInscriptas = #{}
   
   method inscribirseA(carrera) {
@@ -136,10 +136,9 @@ class Materia {
   const property creditosQueAporta = 20
   const property creditosQueRequiere
   
-  method estanTodasAprobadas(materias) = materias.all(
-    { (materia -> meteria.nota()) >= 6 }
-  )
-  
+  //method estanTodasAprobadas(materias) = materias.all(
+  //{ (materia -> meteria.nota()) >= 6 }
+  //)
   method inscribirAPersona(persona) {
     if (persona.puedeInscribirseEn(self))
       estudiantesInscriptosEsteCuatrimestre.add(persona)
