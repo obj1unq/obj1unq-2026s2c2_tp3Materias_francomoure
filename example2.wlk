@@ -123,8 +123,8 @@ object sinRequisitos1{
   }
 } //entienden el mismo mensaje cumpleRequistos()
 object requisito{
-  method cumpleRequisitos(){
-    return materia.correlativas()
+  method cumpleRequisitos(materia, estudiante){
+    return materia.correlativas() //aca falta codigo
   }
 }
 object requisito3{
