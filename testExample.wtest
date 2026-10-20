@@ -54,4 +54,6 @@ describe "inscripcion a materias" {
     assert.that(alex.perteneceMateriaACarrerasDeEstudiante(bdd))
     assert.notThat(alex.perteneceMateriaACarrerasDeEstudiante(psicologia))
   }
+
+
 }

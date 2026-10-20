@@ -32,7 +32,7 @@ class Persona {
   
   method cursarMateriaConNota(materia, nota) {
     self.validarCursarMateriaConNota(materia, nota)
-    materiasConNota.add(new Cursada(materia = materia, nota = nota))
+    materiasConNota.add(new Cursada(materia = materia, nota = nota, persona = new Persona()))
     materiasInscriptas.remove(materia)
     self.añadirAAprobadasSiAprobo(materia, nota)
   }
@@ -117,9 +117,24 @@ class Persona {
   ) >= materia.creditosQueRequiere()
 }
 
+object sinRequisitos1{
+  method cumpleRequisitos() {
+    return true
+  }
+} //entienden el mismo mensaje cumpleRequistos()
+object requisito{
+  method cumpleRequisitos(){
+    return materia.correlativas()
+  }
+}
+object requisito3{
+  method return true
+}
+
 class Cursada {
   var property materia
   var property nota
+  var property persona 
 }
 
 class Carrera {
@@ -131,7 +146,9 @@ class Carrera {
 class Materia {
   var property nota = 1
   var property estudiantesInscriptosEsteCuatrimestre = #{}
-  var property requisitos = #{}
+  var property requisito
+  var correlativas = #{}
+
   var property año = 1
   const property creditosQueAporta = 20
   const property creditosQueRequiere
