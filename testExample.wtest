@@ -1,9 +1,74 @@
-import example.pepita
+import example2.Cursada
+import example2.Persona
+import example2.Carrera
+import example2.Materia
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+describe "inscripcion a materias" {
+  const programacion = new Carrera()
+  const tuess = new Carrera()
+  const to = new Carrera()
+  const epl = new Materia(creditosQueRequiere = 0)
+  const mate1 = new Materia(creditosQueRequiere = 0)
+  const obj1 = new Materia(creditosQueRequiere = 0)
+  const obj2 = new Materia(creditosQueRequiere = 0)
+  const obj3 = new Materia(creditosQueRequiere = 0)
+  const bdd = new Materia(creditosQueRequiere = 0)
+  const pconc = new Materia(creditosQueRequiere = 0)
+  const meYa = new Materia(creditosQueRequiere = 0)
+  const tYs = new Materia(creditosQueRequiere = 0)
+  const economia = new Materia(creditosQueRequiere = 0)
+  const desarrolloLocal = new Materia(creditosQueRequiere = 0)
+  const lea = new Materia(creditosQueRequiere = 0)
+  const cienciasSalud = new Materia(creditosQueRequiere = 0)
+  const psicologia = new Materia(creditosQueRequiere = 0)
+  const antropologia = new Materia(creditosQueRequiere = 0)
+  const sociologia = new Materia(creditosQueRequiere = 0)
+  const alex = new Persona()
+  const cursada1 = new Cursada()
+  
+  test "test 1" {
+    programacion.materias().add(epl)
+    programacion.materias().add(mate1)
+    programacion.materias().add(obj1)
+    programacion.materias().add(obj2)
+    programacion.materias().add(obj3)
+    programacion.materias().add(bdd)
+    programacion.materias().add(pconc)
+    
+    tuess.materias().add(meYa)
+    tuess.materias().add(tYs)
+    tuess.materias().add(economia)
+    tuess.materias().add(desarrolloLocal)
+    
+    to.materias().add(lea)
+    to.materias().add(cienciasSalud)
+    to.materias().add(psicologia)
+    to.materias().add(antropologia)
+    to.materias().add(sociologia)
+    
+    assert.equals(7, programacion.materias().size())
+    
+    alex.inscribirseA(programacion)
+    alex.inscribirseA(tuess)
+    
+    assert.that(alex.carreras().size() == 2)
+    assert.that(alex.carreras().contains(programacion))
+    assert.that(alex.perteneceMateriaACarrerasDeEstudiante(bdd))
+    assert.notThat(alex.perteneceMateriaACarrerasDeEstudiante(psicologia))
   }
-
+  
+  test "test 2" {
+    cursada1.cursarMateriaConNota(mate1, 2, alex)
+    cursada1.cursarMateriaConNota(obj1, 10, alex)
+    cursada1.cursarMateriaConNota(economia, 6, alex)
+    cursada1.cursarMateriaConNota(tYs, 8, alex)
+    cursada1.cursarMateriaConNota(mate1, 8, alex)
+    cursada1.cursarMateriaConNota(bdd, 2, alex)
+    
+    cursada1.cursarMateriaConNota(mate1, 7, alex)
+    cursada1.cursarMateriaConNota(bdd, 12, alex)
+    
+    assert.that(alex.yaEstaAprobada(mate1))
+    assert.notThat(alex.yaEstaAprobada(bdd))
+  }
 }
