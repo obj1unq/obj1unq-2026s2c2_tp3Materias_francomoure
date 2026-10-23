@@ -29,6 +29,32 @@ class Persona {
     { carrera => carrera.materias().contains(materia) }
   )
   
+<<<<<<< HEAD
+=======
+  method cursarMateriaConNota(materia, nota) {
+    self.validarCursarMateriaConNota(materia, nota)
+    materiasConNota.add(new Cursada(materia = materia, nota = nota, persona = new Persona()))
+    materiasInscriptas.remove(materia)
+    self.añadirAAprobadasSiAprobo(materia, nota)
+  }
+  
+  method añadirAAprobadasSiAprobo(materia, nota) {
+    if (nota >= 6) materiasAprobadas.add(materia)
+  }
+  
+  method validarCursarMateriaConNota(materia, nota) {
+    if ((((not self.perteneceMateriaACarrerasDeEstudiante(
+        materia
+      )) or self.yaEstaAprobada(
+        materia
+      )) or (not self.materiasInscriptas().contains(
+        materia
+      ))) or (not ((1 <= nota) and (nota <= 10)))) self.error(
+        "validacion incorrecta"
+      )
+  }
+  
+>>>>>>> c8bf4252210e986b4356d70ab2c6b6b3338b5df6
   method yaEstaAprobada(materia) = materiasAprobadas.contains(materia)
   
   method aproboMateria(materia) = self.yaEstaAprobada(materia)
@@ -93,7 +119,22 @@ class Persona {
   ) >= materia.creditosQueRequiere()
 }
 
+object sinRequisitos1{
+  method cumpleRequisitos() {
+    return true
+  }
+} //entienden el mismo mensaje cumpleRequistos()
+object requisito{
+  method cumpleRequisitos(materia, estudiante){
+    return materia.correlativas() //aca falta codigo
+  }
+}
+object requisito3{
+  method return true
+}
+
 class Cursada {
+<<<<<<< HEAD
   method cursarMateriaConNota(unaMateria, unaNota, unaPersona) {
     self.validarCursarMateriaConNota(unaMateria, unaNota, unaPersona)
     unaPersona.materiasConNota().add([unaMateria, unaNota])
@@ -116,6 +157,11 @@ class Cursada {
         "validacion incorrecta"
       )
   }
+=======
+  var property materia
+  var property nota
+  var property persona 
+>>>>>>> c8bf4252210e986b4356d70ab2c6b6b3338b5df6
 }
 
 class Carrera {
@@ -125,7 +171,9 @@ class Carrera {
 class Materia {
   var property nota = 1
   var property estudiantesInscriptosEsteCuatrimestre = #{}
-  var property requisitos = #{}
+  var property requisito
+  var correlativas = #{}
+
   var property año = 1
   const property creditosQueAporta = 20
   const property creditosQueRequiere

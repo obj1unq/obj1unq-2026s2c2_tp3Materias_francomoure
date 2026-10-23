@@ -56,6 +56,7 @@ describe "inscripcion a materias" {
     assert.that(alex.perteneceMateriaACarrerasDeEstudiante(bdd))
     assert.notThat(alex.perteneceMateriaACarrerasDeEstudiante(psicologia))
   }
+<<<<<<< HEAD
   
   test "test 2" {
     cursada1.cursarMateriaConNota(mate1, 2, alex)
@@ -70,4 +71,8 @@ describe "inscripcion a materias" {
     
     assert.that(alex.yaEstaAprobada(mate1))
   }
+=======
+
+
+>>>>>>> c8bf4252210e986b4356d70ab2c6b6b3338b5df6
 }
