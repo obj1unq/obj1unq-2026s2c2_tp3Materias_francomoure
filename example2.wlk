@@ -1,5 +1,5 @@
 class Persona {
-  var carreras = #{}
+  var property carreras = #{}
   var property materiasConNota = []
   var property materiasAprobadas = #{}
   var property materiasInscriptas = #{}
@@ -13,8 +13,8 @@ class Persona {
     if (carreras.contains(carrera)) self.error("ya esta inscripto")
   }
   
-  method carrerasDeEstudiante() = carreras
-  
+  //punto 1 hecho
+  //punto 2 hecho
   method inscribirseAMateria(materia) {
     self.validarInscribirseAMateria(materia)
     materiasInscriptas.add(materia)
@@ -24,34 +24,10 @@ class Persona {
     if (materiasInscriptas.contains(materia)) self.error("materia ya inscripta")
   }
   
-  method perteneceMateriaACarrerasDeEstudiante(
-    materia
-  ) = self.carrerasDeEstudiante().any(
-    { carrera => carrera.materiasDeCarrera().contains(materia) }
+  //punto 3
+  method perteneceMateriaACarrerasDeEstudiante(materia) = self.carreras().any(
+    { carrera => carrera.materias().contains(materia) }
   )
-  
-  method cursarMateriaConNota(materia, nota) {
-    self.validarCursarMateriaConNota(materia, nota)
-    materiasConNota.add(new Cursada(materia = materia, nota = nota))
-    materiasInscriptas.remove(materia)
-    self.añadirAAprobadasSiAprobo(materia, nota)
-  }
-  
-  method añadirAAprobadasSiAprobo(materia, nota) {
-    if (nota >= 6) materiasAprobadas.add(materia)
-  }
-  
-  method validarCursarMateriaConNota(materia, nota) {
-    if ((((not self.perteneceMateriaACarrerasDeEstudiante(
-        materia
-      )) or self.yaEstaAprobada(
-        materia
-      )) or (not self.materiasInscriptas().contains(
-        materia
-      ))) or (not ((1 <= nota) and (nota <= 10)))) self.error(
-        "validacion incorrecta"
-      )
-  }
   
   method yaEstaAprobada(materia) = materiasAprobadas.contains(materia)
   
@@ -118,14 +94,32 @@ class Persona {
 }
 
 class Cursada {
-  var property materia
-  var property nota
+  method cursarMateriaConNota(unaMateria, unaNota, unaPersona) {
+    self.validarCursarMateriaConNota(unaMateria, unaNota, unaPersona)
+    unaPersona.materiasConNota().add([unaMateria, unaNota])
+    unaPersona.materiasInscriptas().remove(unaMateria)
+    self.añadirAAprobadasSiAprobo(unaMateria, unaNota, unaPersona)
+  }
+  
+  method añadirAAprobadasSiAprobo(unaMateria, unaNota, unaPersona) {
+    if (unaNota >= 6) unaPersona.materiasAprobadas().add(unaMateria)
+  }
+  
+  method validarCursarMateriaConNota(unaMateria, unaNota, unaPersona) {
+    if ((((not unaPersona.perteneceMateriaACarrerasDeEstudiante(
+        unaMateria
+      )) or unaPersona.yaEstaAprobada(
+        unaMateria
+      )) or (not unaPersona.materiasInscriptas().contains(
+        unaMateria
+      ))) or (not ((1 <= unaNota) and (unaNota <= 10)))) self.error(
+        "validacion incorrecta"
+      )
+  }
 }
 
 class Carrera {
-  var materias = #{}
-  
-  method materiasDeCarrera() = materias
+  var property materias = #{}
 }
 
 class Materia {
