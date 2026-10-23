@@ -134,7 +134,6 @@ object requisito3{
 }
 
 class Cursada {
-<<<<<<< HEAD
   method cursarMateriaConNota(unaMateria, unaNota, unaPersona) {
     self.validarCursarMateriaConNota(unaMateria, unaNota, unaPersona)
     unaPersona.materiasConNota().add([unaMateria, unaNota])
@@ -157,11 +156,9 @@ class Cursada {
         "validacion incorrecta"
       )
   }
-=======
   var property materia
   var property nota
   var property persona 
->>>>>>> c8bf4252210e986b4356d70ab2c6b6b3338b5df6
 }
 
 class Carrera {

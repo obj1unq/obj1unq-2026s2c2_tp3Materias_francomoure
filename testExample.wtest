@@ -69,5 +69,6 @@ describe "inscripcion a materias" {
     cursada1.cursarMateriaConNota(bdd, 12, alex)
     
     assert.that(alex.yaEstaAprobada(mate1))
+    assert.notThat(alex.yaEstaAprobada(bdd))
   }
 }
